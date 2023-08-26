@@ -13,8 +13,9 @@ datasource db {
 model Paciente {
   id             Int           @id @default(autoincrement())
   nome           String
-  cpf            String        @unique
+  cpf            String
   dataNascimento DateTime
+  status         String // Certifique-se de que essa linha está presente
   Solicitacao    Solicitacao[]
 }
 
