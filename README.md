@@ -8,7 +8,7 @@ O arquivo `schema.prisma` utiliza a linguagem do Prisma Schema para representar 
 
 ### Definindo Modelos e Campos
 
-Dentro do `schema.prisma`, cada modelo representa uma entidade principal no nosso sistema, como `Paciente`, `Profissional`, `TipoSolicitacao`, `Procedimento` e `Solicitacao`. Cada modelo é definido com seus campos específicos, que representam os atributos da entidade. Por exemplo, o modelo `Paciente` pode ter campos como `nome`, `cpf`, `dataNascimento` e `status`.
+Dentro do `schema.prisma`, cada modelo representa uma entidade principal no nosso sistema, como `Paciente`, `Profissional`, `TipoSolicitacao`, `Procedimento` e `Solicitacao`. Cada modelo é definido com seus campos específicos, que representam os atributos da entidade.
 
 ### Estabelecendo Relacionamentos
 
@@ -21,9 +21,5 @@ O Prisma Schema também nos auxilia na garantia da integridade dos dados. Ao def
 ### Gerando o Prisma Client
 
 Uma vez que o `schema.prisma` é definido, utilizamos o Prisma CLI para gerar o Prisma Client. O Prisma Client é uma ferramenta que nos permite interagir com o banco de dados de forma intuitiva e segura, oferecendo funções e métodos que correspondem diretamente aos modelos e campos que definimos no `schema.prisma`.
-
-### Aprendendo Mais
-
-Para compreender em profundidade como o Prisma Schema funciona e como definir a estrutura do banco de dados, recomendamos explorar a [documentação oficial do Prisma Schema](https://pris.ly/d/prisma-schema).
 
 ---
