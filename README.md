@@ -1,73 +1,29 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Estrutura do Banco de Dados
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A estrutura do banco de dados é uma parte fundamental do projeto, uma vez que define como os dados são organizados e armazenados. O arquivo `schema.prisma` é o coração dessa estrutura e é onde definimos os modelos, campos e relacionamentos que compõem o nosso banco de dados.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Prisma Schema e seu Papel
 
-## Description
+O arquivo `schema.prisma` utiliza a linguagem do Prisma Schema para representar a estrutura do banco de dados. Essa linguagem é poderosa e flexível, permitindo que descrevamos os detalhes das tabelas, campos e associações entre eles de maneira declarativa.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Definindo Modelos e Campos
 
-## Installation
+Dentro do `schema.prisma`, cada modelo representa uma entidade principal no nosso sistema, como `Paciente`, `Profissional`, `TipoSolicitacao`, `Procedimento` e `Solicitacao`. Cada modelo é definido com seus campos específicos, que representam os atributos da entidade. Por exemplo, o modelo `Paciente` pode ter campos como `nome`, `cpf`, `dataNascimento` e `status`.
 
-```bash
-$ npm install
-```
+### Estabelecendo Relacionamentos
 
-## Running the app
+Além dos campos individuais, o Prisma Schema nos permite estabelecer relacionamentos entre os modelos. Por exemplo, a tabela `Solicitacao` está associada aos modelos `Paciente`, `Profissional` e `TipoSolicitacao`. Esses relacionamentos são representados dentro do `schema.prisma`, permitindo que consultas complexas sejam executadas para recuperar dados interligados.
 
-```bash
-# development
-$ npm run start
+### Integridade de Dados
 
-# watch mode
-$ npm run start:dev
+O Prisma Schema também nos auxilia na garantia da integridade dos dados. Ao definir as restrições adequadas nos campos e estabelecer relações apropriadas, podemos garantir que os dados armazenados no banco de dados estejam sempre coerentes e precisos.
 
-# production mode
-$ npm run start:prod
-```
+### Gerando o Prisma Client
 
-## Test
+Uma vez que o `schema.prisma` é definido, utilizamos o Prisma CLI para gerar o Prisma Client. O Prisma Client é uma ferramenta que nos permite interagir com o banco de dados de forma intuitiva e segura, oferecendo funções e métodos que correspondem diretamente aos modelos e campos que definimos no `schema.prisma`.
 
-```bash
-# unit tests
-$ npm run test
+### Aprendendo Mais
 
-# e2e tests
-$ npm run test:e2e
+Para compreender em profundidade como o Prisma Schema funciona e como definir a estrutura do banco de dados, recomendamos explorar a [documentação oficial do Prisma Schema](https://pris.ly/d/prisma-schema).
 
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+---
