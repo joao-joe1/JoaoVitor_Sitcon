@@ -7,15 +7,96 @@ export class PacienteService {
 
     async seedData() {
         const pacientesData = [
-            { nome: 'Augusto Fernandes', dataNascimento: new Date('2000-08-10'), cpf: '210.298.293-09', status: 'ativo' },
-            { nome: 'Maria Silva Oliveira', dataNascimento: new Date('1999-03-21'), cpf: '210.298.293-08', status: 'ativo' },
-            // ... outros dados de pacientes
+            {
+                nome: 'Augusto Fernandes',
+                dataNasc: new Date('2000-08-10'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'Maria Silva Oliveira',
+                dataNasc: new Date('1999-03-21'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'Alfonse Smikchuz',
+                dataNasc: new Date('2002-10-02'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'Nagela Perreira',
+                dataNasc: new Date('1997-05-16'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'João Paulo Ferreira',
+                dataNasc: new Date('1995-06-26'),
+                cpf: '210.298.293-09',
+                status: 'inativo'
+            },
+            {
+                nome: 'Gustavo Hernanes',
+                dataNasc: new Date('2001-07-10'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'Zira Silva',
+                dataNasc: new Date('2003-02-14'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'Helena Marques',
+                dataNasc: new Date('2000-01-11'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'Julio Costa Martins',
+                dataNasc: new Date('1980-11-23'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'João Bicalho',
+                dataNasc: new Date('1993-03-12'),
+                cpf: '210.298.293-09',
+                status: 'inativo'
+            },
+            {
+                nome: 'Carolina Rosa Silva',
+                dataNasc: new Date('2001-12-24'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
+            {
+                nome: 'Paulina Araujo',
+                dataNasc: new Date('2002-08-10'),
+                cpf: '210.298.293-09',
+                status: 'ativo'
+            },
         ];
 
+        // const tiposSolicitacaoData = [
+        //     { descricao: 'Consulta', status: 'ativo' },
+        //     { descricao: 'Exames Laboratoriais', status: 'ativo' }
+        // ];
+
+        // const procedimentosData = [
+        //     { descricao: 'Consulta Pediátrica', tipo_id: 1, status: 'ativo' },
+        //     { descricao: 'Consulta Clínico Geral', tipo_id: 1, status: 'ativo' },
+        //     { descricao: 'Hemograma', tipo_id: 2, status: 'ativo' },
+        //     { descricao: 'Glicemia', tipo_id: 2, status: 'ativo' },
+        //     { descricao: 'Colesterol', tipo_id: 2, status: 'ativo' },
+        //     { descricao: 'Triglicerídeos', tipo_id: 2, status: 'ativo' }
+        // ];
+
         for (const data of pacientesData) {
-            await this.prismaService.paciente.create({
-                data,
-            });
+            await this.prismaService.paciente.create({ data });
         }
     }
 }
