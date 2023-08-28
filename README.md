@@ -1,25 +1,32 @@
-## Estrutura do Banco de Dados
+## Esquema do Banco de Dados
 
-A estrutura do banco de dados é uma parte fundamental do projeto, uma vez que define como os dados são organizados e armazenados. O arquivo `schema.prisma` é o coração dessa estrutura e é onde definimos os modelos, campos e relacionamentos que compõem o nosso banco de dados.
+O arquivo `schema.prisma` define a estrutura do banco de dados do projeto usando a linguagem do Prisma Schema. Ele descreve os modelos (tabelas), os campos de cada modelo e os relacionamentos entre eles.
 
-### Prisma Schema e seu Papel
+Para saber mais sobre como funciona o Prisma Schema e como você pode definir a estrutura do banco de dados, confira a [documentação oficial do Prisma Schema](https://pris.ly/d/prisma-schema).
 
-O arquivo `schema.prisma` utiliza a linguagem do Prisma Schema para representar a estrutura do banco de dados. Essa linguagem é poderosa e flexível, permitindo que descrevamos os detalhes das tabelas, campos e associações entre eles de maneira declarativa.
+Aqui está um trecho do arquivo `schema.prisma`:
 
-### Definindo Modelos e Campos
+```prisma
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-Dentro do `schema.prisma`, cada modelo representa uma entidade principal no nosso sistema, como `Paciente`, `Profissional`, `TipoSolicitacao`, `Procedimento` e `Solicitacao`. Cada modelo é definido com seus campos específicos, que representam os atributos da entidade.
+generator client {
+  provider = "prisma-client-js"
+}
 
-### Estabelecendo Relacionamentos
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
 
-Além dos campos individuais, o Prisma Schema nos permite estabelecer relacionamentos entre os modelos. Por exemplo, a tabela `Solicitacao` está associada aos modelos `Paciente`, `Profissional` e `TipoSolicitacao`. Esses relacionamentos são representados dentro do `schema.prisma`, permitindo que consultas complexas sejam executadas para recuperar dados interligados.
+model Paciente {
+  // Definição dos campos do modelo Paciente
+}
 
-### Integridade de Dados
+model Profissional {
+  // Definição dos campos do modelo Profissional
+}
 
-O Prisma Schema também nos auxilia na garantia da integridade dos dados. Ao definir as restrições adequadas nos campos e estabelecer relações apropriadas, podemos garantir que os dados armazenados no banco de dados estejam sempre coerentes e precisos.
-
-### Gerando o Prisma Client
-
-Uma vez que o `schema.prisma` é definido, utilizamos o Prisma CLI para gerar o Prisma Client. O Prisma Client é uma ferramenta que nos permite interagir com o banco de dados de forma intuitiva e segura, oferecendo funções e métodos que correspondem diretamente aos modelos e campos que definimos no `schema.prisma`.
-
----
+model Solicitacao {
+  // Definição dos campos do modelo Solicitacao
+}```
