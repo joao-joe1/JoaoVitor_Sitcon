@@ -29,4 +29,5 @@ model Profissional {
 
 model Solicitacao {
   // Definição dos campos do modelo Solicitacao
-}```
+}
+```
