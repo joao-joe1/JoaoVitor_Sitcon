@@ -12,20 +12,10 @@ export class ProfissionalService {
             { nome: 'João Paulo Nobrega', status: 'ativo' }
         ];
 
-        const profissionalAtendeData = [
-            { procedimento: { connect: { id: 1 } }, profissional: { connect: { id: 2 } }, status: 'ativo' },
-            { procedimento: { connect: { id: 2 } }, profissional: { connect: { id: 2 } }, status: 'ativo' },
-            { procedimento: { connect: { id: 2 } }, profissional: { connect: { id: 3 } }, status: 'ativo' },
-            { procedimento: { connect: { id: 1 } }, profissional: { connect: { id: 3 } }, status: 'inativo' },
-            { procedimento: { connect: { id: 3 } }, profissional: { connect: { id: 1 } }, status: 'ativo' },
-            { procedimento: { connect: { id: 4 } }, profissional: { connect: { id: 1 } }, status: 'ativo' },
-            { procedimento: { connect: { id: 5 } }, profissional: { connect: { id: 1 } }, status: 'ativo' },
-            { procedimento: { connect: { id: 6 } }, profissional: { connect: { id: 1 } }, status: 'ativo' }
-        ];
-
-        const createProfissionais = profissionaisData.map(data => this.prismaService.profissional.create({ data }))
-        const createProfissionaisAtende = profissionalAtendeData.map(data => this.prismaService.profissionalAtende.create({ data }))
-
-        await Promise.all([...createProfissionais, ...createProfissionaisAtende]);
+        for (const data of profissionaisData) {
+            await this.prismaService.profissional.create({
+                data
+            })
+        }
     }
 }

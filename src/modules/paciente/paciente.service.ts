@@ -81,20 +81,6 @@ export class PacienteService {
             },
         ];
 
-        // const tiposSolicitacaoData = [
-        //     { descricao: 'Consulta', status: 'ativo' },
-        //     { descricao: 'Exames Laboratoriais', status: 'ativo' }
-        // ];
-
-        // const procedimentosData = [
-        //     { descricao: 'Consulta Pediátrica', tipo_id: 1, status: 'ativo' },
-        //     { descricao: 'Consulta Clínico Geral', tipo_id: 1, status: 'ativo' },
-        //     { descricao: 'Hemograma', tipo_id: 2, status: 'ativo' },
-        //     { descricao: 'Glicemia', tipo_id: 2, status: 'ativo' },
-        //     { descricao: 'Colesterol', tipo_id: 2, status: 'ativo' },
-        //     { descricao: 'Triglicerídeos', tipo_id: 2, status: 'ativo' }
-        // ];
-
         for (const data of pacientesData) {
             await this.prismaService.paciente.create({ data });
         }

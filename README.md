@@ -20,14 +20,27 @@ datasource db {
 }
 
 model Paciente {
-  // Definição dos campos do modelo Paciente
+
 }
 
 model Profissional {
-  // Definição dos campos do modelo Profissional
+
+}
+
+model TipoSolicitacao {
+
+}
+
+model Procedimento {
+
 }
 
 model Solicitacao {
-  // Definição dos campos do modelo Solicitacao
+
 }
+
+model ProfissionalAtende {
+
+}
+
 ```

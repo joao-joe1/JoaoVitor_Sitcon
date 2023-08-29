@@ -22,6 +22,7 @@ model Paciente {
 model Profissional {
   id                 Int                  @id @default(autoincrement())
   nome               String
+  status             String
   Solicitacao        Solicitacao[]
   ProfissionalAtende ProfissionalAtende[]
 }
@@ -29,6 +30,7 @@ model Profissional {
 model TipoSolicitacao {
   id           Int            @id @default(autoincrement())
   nome         String
+  status       String
   Solicitacao  Solicitacao[]
   Procedimento Procedimento[]
 }
