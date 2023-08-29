@@ -12,7 +12,7 @@ export class PacienteController {
         const firstIdPatientOfPage = (page - 1) * amountOfPatientsPerPage + 1
         const lastIdPatientOfPage = (page - 1) * amountOfPatientsPerPage + 10
 
-        const patiens = await this.prismaService.paciente.findMany({
+        const data = await this.prismaService.paciente.findMany({
             where: {
                 AND: [
                     { id: { gte: firstIdPatientOfPage } }, // GTE: Greater than or equal to
@@ -21,7 +21,7 @@ export class PacienteController {
             },
         })
 
-        return { patiens }
+        return { data }
     }
 
     @Get('/lista')
