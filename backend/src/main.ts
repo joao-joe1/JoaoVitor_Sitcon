@@ -6,7 +6,8 @@ import { TiposSolicitacaoService } from './modules/solicitacao/tipos-solicitacao
 import { ProcedimentosService } from './modules/procedimentos/procedimentos.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
+
 
   //Paciente Service
   // const pacienteService = app.get(PacienteService);
@@ -24,6 +25,6 @@ async function bootstrap() {
   // const procedimentosService = app.get(ProcedimentosService)
   // await procedimentosService.seedData();
 
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();
