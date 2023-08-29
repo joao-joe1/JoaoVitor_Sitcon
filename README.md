@@ -20,27 +20,61 @@ datasource db {
 }
 
 model Paciente {
-
+  id          Int           @id @default(autoincrement())
+  nome        String
+  dataNasc    DateTime
+  cpf         String
+  status      String
+  Solicitacao Solicitacao[]
 }
 
 model Profissional {
-
+  id                 Int                  @id @default(autoincrement())
+  nome               String
+  status             String
+  Solicitacao        Solicitacao[]
+  ProfissionalAtende ProfissionalAtende[]
 }
 
 model TipoSolicitacao {
-
+  id           Int            @id @default(autoincrement())
+  nome         String
+  status       String
+  Solicitacao  Solicitacao[]
+  Procedimento Procedimento[]
 }
 
 model Procedimento {
-
+  id                 Int                  @id @default(autoincrement())
+  nome               String
+  tipo               TipoSolicitacao      @relation(fields: [tipoId], references: [id])
+  tipoId             Int
+  status             String
+  Solicitacao        Solicitacao?         @relation(fields: [solicitacaoId], references: [id])
+  solicitacaoId      Int?
+  ProfissionalAtende ProfissionalAtende[]
 }
 
 model Solicitacao {
-
+  id                Int             @id @default(autoincrement())
+  pacienteId        Int
+  profissionalId    Int
+  tipoSolicitacaoId Int
+  data              DateTime
+  horario           String
+  procedimentos     Procedimento[]
+  paciente          Paciente        @relation(fields: [pacienteId], references: [id])
+  profissional      Profissional    @relation(fields: [profissionalId], references: [id])
+  tipoSolicitacao   TipoSolicitacao @relation(fields: [tipoSolicitacaoId], references: [id])
 }
 
 model ProfissionalAtende {
-
+  id             Int          @id @default(autoincrement())
+  procedimento   Procedimento @relation(fields: [procedimentoId], references: [id])
+  profissional   Profissional @relation(fields: [profissionalId], references: [id])
+  procedimentoId Int
+  profissionalId Int
+  status         String
 }
 
 ```
