@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { RiSearchLine } from 'react-icons/ri';
+// import { useRouter } from 'next/router';
 
-interface PatientTableProps { }
+interface PatientTableProps {
+  router: any
+}
 
 type TPatient = {
   id: number;
@@ -13,6 +16,7 @@ type TPatient = {
   cpf: string;
 };
 
+
 const formatDate = (dateString: string): string => {
   const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
   return new Date(dateString).toLocaleDateString('pt-BR', options);
@@ -20,7 +24,9 @@ const formatDate = (dateString: string): string => {
 
 const INITIAL_PAGINATION_VALUE = 1;
 
-export default function PatientTable({ }: PatientTableProps) {
+export default function PatientTable({ router }: PatientTableProps) {
+
+  // const router = useRouter()
   const [data, setData] = useState<TPatient[]>([]);
   const [loading, setIsLoading] = useState(true);
   const [page, setPage] = useState(INITIAL_PAGINATION_VALUE);
@@ -71,7 +77,14 @@ export default function PatientTable({ }: PatientTableProps) {
               <td>{formatDate(patient.dataNasc)}</td>
               <td>{patient.cpf}</td>
               <td>
-                <button className={styles.actionButton}><b>Prosseguir</b></button>
+                <button className={styles.actionButton} onClick={() => {
+                  router.push({
+                    pathname: '/FormPatient',
+                    query: { id: patient.id }
+                  });
+                }}>
+                  <b>Prosseguir</b>
+                </button>
               </td>
             </tr>
           ))}

@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+// import PatientTable from '../Table';
 
 interface PatientFormData {
     name: string;
@@ -13,6 +15,10 @@ interface PatientFormData {
 }
 
 const PatientForm: React.FC = () => {
+
+    const router = useRouter();
+    const { id } = router.query;
+
     const [formData, setFormData] = useState<PatientFormData>({
         name: '',
         birthDate: '',
