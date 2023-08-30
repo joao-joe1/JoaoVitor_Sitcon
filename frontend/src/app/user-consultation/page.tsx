@@ -1,22 +1,32 @@
-'use client';
+import FormPatient from '@/layouts/FormPatient'
 
-type TUser = {
-  id: number,
+async function getPatientById(id: number) {
+  try {
+    const data = await fetch(`http://localhost:3001/api/patients/one-by-id?id=${id}`)
+    console.log("data value: ", data);
+    const json = await data.json()
+    console.log("json value: ", json);
 
+    return json.data
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
 }
 
-interface ClientRepository {
-  getUserInfo(): Promise<TUser[]>
-}
-
-interface UserConsultationProps {
-
-}
-
-export default function UserConsultation({ }: UserConsultationProps) {
-  // const userInfo = await ClientRepository.getUserInfo();
+export default async function UserConsultation({
+  searchParams
+ } : {
+  searchParams: {[key: string]: number }
+ }) {
+  const { patient_id } = searchParams
+  const patient = await getPatientById(patient_id)
 
   return (
-    
-  )
+    <>
+      <h1>User Consultation with Patient id:</h1>
+      <p>{JSON.stringify(patient)}</p>
+      <FormPatient data={patient} />
+    </>
+  );
 }

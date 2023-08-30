@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
+import formatDate from '@/utils/formatDate';
 // import PatientTable from '../Table';
 
 interface PatientFormData {
-    name: string;
-    birthDate: string;
+    nome: string;
+    dataNasc: string;
     cpf: string;
     professional: string;
     requestType: string;
@@ -14,60 +15,75 @@ interface PatientFormData {
     dateTime: string;
 }
 
-const PatientForm: React.FC = () => {
+interface PatientFormProps {
+    data: Pick<PatientFormData, 'nome' | 'dataNasc' | 'cpf'>
+}
 
-    const router = useRouter();
-    const { id } = router.query;
+export default function PatientForm({ data }: PatientFormProps) {
+    const [isSubmitting, setIsSubmittig] = useState(false)
+    // const [formData, setFormData] = useState<PatientFormData>({
+    //     name: '',
+    //     birthDate: '',
+    //     cpf: '',
+    //     professional: '',
+    //     requestType: '',
+    //     procedures: '',
+    //     dateTime: '',
+    // });
 
-    const [formData, setFormData] = useState<PatientFormData>({
-        name: '',
-        birthDate: '',
-        cpf: '',
-        professional: '',
-        requestType: '',
-        procedures: '',
-        dateTime: '',
-    });
+    // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    //     const { name, value } = e.target;
+    //     setFormData((prevData) => ({
+    //         ...prevData,
+    //         [name]: value,
+    //     }));
+    // };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+    async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Aqui você pode enviar os dados para o servidor ou realizar outras ações necessárias
-        console.log(formData);
-    };
+        try {
+            const formData = new FormData(e.currentTarget)
+            const response = await fetch('/api/send-patient-solicitation', {
+                method: 'POST',
+                body: formData,
+            })
+            console.log("response of /api/send-user-solicitation:", response)
 
+            const data = await response.json()
+        } catch (error) {
+
+        }
+
+
+    }
+
+    // console.log(data.data.nome)
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
             <label>
                 Nome do Paciente:
-                <input type="text" name="name" required onChange={handleInputChange} />
+                <input disabled type="text" name="name" value={data.nome} required />
             </label>
             <br />
             <label>
                 Data de Nascimento:
-                <input type="date" name="birthDate" required onChange={handleInputChange} />
+                <input disabled name="birthDate" value={formatDate(data.dataNasc)} required />
             </label>
             <br />
             <label>
                 CPF:
-                <input type="text" name="cpf" required onChange={handleInputChange} />
+                <input disabled type="text" name="cpf" value={data.cpf} required />
             </label>
             <br />
             <label>
                 Profissional:
-                <input type="text" name="professional" required onChange={handleInputChange} />
+                <input type="text" name="professional" required />
             </label>
             <br />
             <label>
                 Tipo de Solicitação:
-                <select name="requestType" required onChange={handleInputChange}>
+                <select name="requestType" required>
                     <option value="">Selecione</option>
                     <option value="consulta">Consulta</option>
                     <option value="exame">Exame</option>
@@ -77,7 +93,7 @@ const PatientForm: React.FC = () => {
             <br />
             <label>
                 Procedimentos:
-                <select name="procedures" required onChange={handleInputChange}>
+                <select name="procedures" required>
                     <option value="">Selecione</option>
                     <option value="procedimento1">Procedimento 1</option>
                     <option value="procedimento2">Procedimento 2</option>
@@ -87,10 +103,12 @@ const PatientForm: React.FC = () => {
             <br />
             <label>
                 Data e Hora:
-                <input type="datetime-local" name="dateTime" required onChange={handleInputChange} />
+                <input type="datetime-local" name="dateTime" required />
             </label>
             <br />
-            <button type="submit">Salvar</button>
+            <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Carregando..." : "Salvar"}
+            </button>
         </form>
     );
 };
