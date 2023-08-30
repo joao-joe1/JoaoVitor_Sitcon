@@ -1,0 +1,125 @@
+/* styles.module.css */
+
+/* Estilo para a tabela de pacientes */
+.patientTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+.patientTable th,
+.patientTable td {
+  padding: 8px;
+  text-align: center;
+  color: #333333;
+}
+
+.patientTable th {
+  background-color: #00629B;
+  color: white;
+  padding: 16px 8px;
+}
+
+/* Estilo para as linhas alternadas */
+.patientRow:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.patientRow:nth-child(odd) {
+  background-color: white;
+}
+
+/* Estilo para os botões de ação */
+.actionButton {
+  background-color: #FF8200;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Estilo para a exibição dos dados */
+.dataDisplay {
+  margin-top: 20px;
+}
+
+.dataDisplay pre {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.noDataMessage {
+  color: #FF8200;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilo para a paginação */
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  margin-top: 20px;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pagination button {
+  background-color: white;
+  color: #C4C4C4;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.pageInputs {
+  display: flex;
+  align-items: center;
+}
+
+.pageButton {
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.searchIcon {
+  align-content: start;
+  color: #C4C4C4;
+  font-size: 1.5em;
+  margin-left: 8px;
+}
+
+.searchBar input {
+  flex: 1;
+  margin-left: 8px;
+  border: none;
+  padding: 4px;
+  color: #C4C4C4;
+  font-size: 0.95em;
+  outline: none;
+}
