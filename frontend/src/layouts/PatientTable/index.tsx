@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 
 import styles from './styles.module.css';
 
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { RiSearchLine } from 'react-icons/ri';
 
 
@@ -16,8 +15,6 @@ import usePageContext from '@/hooks/usePageContext';
 import usePatientsByPageWithControllers from "@/hooks/usePatientsByPageWithControllers"
 
 interface PatientTableProps { }
-
-
 
 const INITIAL_PAGINATION_VALUE = 1;
 

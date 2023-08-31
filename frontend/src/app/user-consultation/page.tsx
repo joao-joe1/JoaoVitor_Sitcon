@@ -24,8 +24,6 @@ export default async function UserConsultation({
 
   return (
     <>
-      <h1>User Consultation with Patient id:</h1>
-      <p>{JSON.stringify(patient)}</p>
       <FormPatient data={patient} />
     </>
   );
