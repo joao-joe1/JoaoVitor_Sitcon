@@ -14,7 +14,7 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "eslint": "8.48.0",
-    "eslint-config-next": "13.4.19",
+    "eslint-config-next": "14.1.0",
     "next": "13.4.19",
     "next-router-mock": "^0.9.9",
     "react": "18.2.0",
